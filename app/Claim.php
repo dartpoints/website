@@ -13,7 +13,7 @@ class Claim extends Model
   * @var array
   */
   protected $fillable = [
-    'points', 'user_id', 'house_id'
+    'user_id', 'house_id', 'event_id'
   ];
 
   /**
@@ -39,5 +39,21 @@ class Claim extends Model
   public function house()
   {
       return $this->belongsTo(House::class);
+  }
+
+  /**
+   * Get the code that owns the claim.
+   */
+  public function code()
+  {
+      return $this->belongsTo(Code::class);
+  }
+
+  /**
+   * Get the event that owns the claim.
+   */
+  public function event()
+  {
+      return $this->belongsTo(Event::class);
   }
 }

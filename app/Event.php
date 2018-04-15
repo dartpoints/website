@@ -13,7 +13,18 @@ class Event extends Model
     * @var array
     */
     protected $fillable = [
-      'name', 'description', 'times', 'location', 'user_id'
+      'name', 'description', 'date', 'location', 'user_id', 'points', 'footnote', 'image'
+    ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'claimable_at',
     ];
 
     /**
@@ -32,4 +43,13 @@ class Event extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+    * Get the codes for the event.
+    */
+    public function codes()
+    {
+      return $this->hasMany(Code::class);
+    }
+
 }

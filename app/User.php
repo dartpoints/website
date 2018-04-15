@@ -60,7 +60,7 @@ class User extends Authenticatable
   public function getPointsAttribute()
   {
       return $this->claims->reduce(function($c, $i) {
-        return $c + $i->points;
+        return $c + $i->code->event->points;
       }) ?? 0;
   }
 }

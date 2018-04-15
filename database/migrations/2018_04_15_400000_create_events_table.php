@@ -16,14 +16,16 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->longText('description');
-
-            $table->string('times');
             $table->string('location');
+            $table->string('footnote');
+            $table->string('image')->nullable();
+            $table->longText('description');
+            $table->unsignedInteger('points');
 
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
+            $table->date('claimable_at');
             $table->timestamps();
         });
     }

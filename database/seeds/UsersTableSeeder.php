@@ -17,5 +17,11 @@ class UsersTableSeeder extends Seeder
           'email' => 'evelina@dartmouth.edu',
           'password' => bcrypt('123456')
         ]);
+
+        House::find(3)->users()->create([
+          'name' => 'Theodore Messinezis',
+          'email' => 'theomessin@dartmouth.edu',
+          'password' => bcrypt('123456')
+        ]);
     }
 }
